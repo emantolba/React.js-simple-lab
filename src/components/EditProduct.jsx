@@ -1,12 +1,12 @@
 import { Component } from "react";
 class EditProduct extends Component {
     state={
-        id:"",
-        name:"",
-        price:"",
-        quantity:"",
-        image:"",
-        description:""
+        _id:this.props.product.id,
+        _name:this.props.product.name,
+        _price:this.props.product.price,
+        _quantity:this.props.product.quantity,
+        _image:this.props.product.image,
+        _description:this.props.product.description
     
         }
        
@@ -17,7 +17,7 @@ class EditProduct extends Component {
         }
         handelerSubmit=(e)=>{
             e.preventDefault();
-            this.props.editProduct(this.state);
+            this.props.editProduct( {id:this.state._id,name:this.state._name,price:this.state._price,image:this.state._image,quantity:this.state._quantity , description:this.state._description});
             this.props.history.push("/Home");
         }
     render() {
@@ -30,13 +30,13 @@ class EditProduct extends Component {
                     </div>
                     <div className="col-md-6">
                         <label>ID</label>
-                        <input type="text" value={this.props.product.id} name="id" onChange={this.handelerInput}  className="form-control"/>
-                        <input type="text" value={this.props.product.name} name="name" onChange={this.handelerInput} className="form-control" />
-                        <input type="number" value={this.props.product.price} name="price" onChange={this.handelerInput} className="form-control" />
-                        <input type="number" value={this.props.product.quantity} name="quantity" onChange={this.handelerInput}className="form-control" />
-                        <input type="text" value={this.props.product.image} name="image" onChange={this.handelerInput}className="form-control" />
-                        <textarea value={this.props.product.description} name="description" onChange={this.handelerInput}className="form-control" />
-                        <button className="btn btn-primary" onClick={this.props.handelerSubmit}>Save</button>
+                        <input type="text" value={this.state._id} name="_id" onChange={this.handelerInput}  className="form-control"/>
+                        <input type="text" value={this.state._name} name="_name" onChange={this.handelerInput} className="form-control" />
+                        <input type="number" value={this.state._price} name="_price" onChange={this.handelerInput} className="form-control" />
+                        <input type="number" value={this.state._quantity} name="_quantity" onChange={this.handelerInput}className="form-control" />
+                        <input type="text" value={this.state._image} name="_image" onChange={this.handelerInput}className="form-control" />
+                        <textarea value={this.state._description} name="_description" onChange={this.handelerInput}className="form-control" />
+                        <button className="btn btn-primary" onClick={this.handelerSubmit}>Save</button>
                     </div>
                 </div>
             </div>
