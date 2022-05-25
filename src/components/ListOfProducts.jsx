@@ -28,13 +28,13 @@ let ListOfProducts =(props)=>{
          </td>
          
          <td>
-             <input type={'button'} value={'Details'} onClick={()=>{props.showdetailes(i);props.history.push(`/detailes/${product.id}`)}} className='btn btn-primary'/>
+             <input type={'button'} value={'Details'} onClick={()=>{props.showdetailes(product);props.history.push(`/detailes/${product.id}`)}} className='btn btn-primary'/>
              <span> </span>
              <input type="button" value="Delete" className='btn btn-danger' onClick={()=>{
                  props.deleteProduct(i);
              }}/>
              <span> </span>
-             <input type="button" value="Edit" className='btn btn-success' onClick={()=>{props.showdetailes(i);props.history.push(`/edit/${product.id}`)}}/>
+             <input type="button" value="Edit" className='btn btn-success' onClick={()=>{props.showdetailes(product);props.history.push(`/edit/${product.id}`)}}/>
          </td>
         </tr>
         );

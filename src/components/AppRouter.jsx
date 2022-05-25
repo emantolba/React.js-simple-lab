@@ -20,7 +20,7 @@ class AppRouter extends Component {
           {id:5,name:"Product 5",price:500,image:"5.jpg",quantity:100 , description:"This is product 5"},],
           showAddProduct:false,
           showProductDetails:false,
-          detaiesId:"",
+          detaiesId:0,
         };
 
         deleteProductHandeler=(id)=>{
@@ -30,10 +30,10 @@ class AppRouter extends Component {
                 arryOfProducts:newArr
             });
           }
-          showDetaiels=(i)=>{
+          showDetaiels=(x)=>{
+            console.log(x);
             this.setState({
-                detaiesId:i,
-                showProductDetails:true
+              detaiesId:x.id,
             });
           }
           addNewProduct=(_product)=>{
@@ -71,8 +71,8 @@ class AppRouter extends Component {
                     <Header/>
                     <Route component={(props)=> <ListOfProducts products= {this.state.arryOfProducts} {...props} deleteProduct={this.deleteProductHandeler} showdetailes={this.showDetaiels}/>}  path="/Home" exact />
                     <Route  component={(props)=> <AddProduct addref={this.addNewProduct} {...props} />} path="/add" exact/>
-                    <Route component={(props)=>  <ProductDetails {...props} product={this.state.arryOfProducts[this.state.detaiesId]}/>} path="/detailes/:id" exact/>
-                    <Route component={(props)=>  <EditProduct {...props} product={this.state.arryOfProducts[this.state.detaiesId]} editProduct={this.editProduct}/>} path= "/edit/:id" exact/>
+                    <Route component={(props)=>  <ProductDetails {...props} product={this.state.arryOfProducts.filter((product)=>{return product.id==this.state.detaiesId})}/>} path="/detailes/:id" exact/>
+                    <Route component={(props)=>  <EditProduct {...props} product={this.state.arryOfProducts.filter((product)=>{return product.id==this.state.detaiesId})} editProduct={this.editProduct}/>} path= "/edit/:id" exact/>
                     <Route component = {(props)=> <ListOfProducts products= {this.state.arryOfProducts.filter((product)=>{return product.id <4})} {...props} deleteProduct={this.deleteProductHandeler} showdetailes={this.showDetaiels}/>} path="/phones" exact/>
                     <Route component = {(props)=> <ListOfProducts products= {this.state.arryOfProducts.filter((product)=>{return product.id >3})} {...props} deleteProduct={this.deleteProductHandeler} showdetailes={this.showDetaiels}/>} path="/tv" exact/>
 

@@ -1,12 +1,12 @@
 import { Component } from "react";
 class EditProduct extends Component {
     state={
-        _id:this.props.product.id,
-        _name:this.props.product.name,
-        _price:this.props.product.price,
-        _quantity:this.props.product.quantity,
-        _image:this.props.product.image,
-        _description:this.props.product.description
+        _id:this.props.product[0].id,
+        _name:this.props.product[0].name,
+        _price:this.props.product[0].price,
+        _quantity:this.props.product[0].quantity,
+        _image:this.props.product[0].image,
+        _description:this.props.product[0].description
     
         }
        
